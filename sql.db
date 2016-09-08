@@ -1,0 +1,59 @@
+CREATE DATABASE zend;
+
+USE zend;
+
+CREATE TABLE orders (
+id INT(6) AUTO_INCREMENT PRIMARY KEY,
+fullname VARCHAR(60),
+email VARCHAR(50),
+status VARCHAR(50),
+checked VARCHAR(50),
+deadline DATE,
+autocomplete TINYINT(1),
+ticketId VARCHAR(50),
+changed TINYINT(1)
+);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId ,changed)
+VALUES (1, "John Snow", "snow@gmail.com", "incomplete", "no", "2016-09-10", true, 1234, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId,changed)
+VALUES (2, "George Test", "george@gmail.com", "complete", "yes", "2016-09-01", false, 1235, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId ,changed)
+VALUES (3, "Dimitri Trazoska", "trazoska@gmail.com", "complete", "no", "2016-10-01", false, 1236 ,false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId, changed)
+VALUES (4, "Chris Magas", "magas@gmail.com", "incomplete", "yes", "2016-09-16", true, 1237, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId, changed)
+VALUES (5, "Anna Pap", "pap@gmail.com", "complete", "yes", "2016-11-01", true, 1238, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId, changed)
+VALUES (6, "Maria Goula", "goula@gmail.com", "incomplete", "no", "2016-09-07", false, 1239, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId, changed)
+VALUES (7, "Takis Popotas", "popotas@gmail.com", "complete", "no", "2016-09-01", false, 1240, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId, changed)
+VALUES (8, "Florian Mario", "mario@gmail.com", "incomplete", "no", "2016-09-18", true, 1241, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId, changed)
+VALUES (9, "Bogota Floh", "floh@gmail.com", "incomplete", "yes", "2016-09-04", false, 1242, false);
+
+INSERT INTO orders (id, fullname, email , status, checked, deadline, autocomplete, ticketId, changed)
+VALUES (10, "Kalomoiros john", "kalomoiros@gmail.com", "complete", "yes", "2016-10-02", true, 1243, false);
+
+
+
+delimiter $$
+CREATE TRIGGER test
+BEFORE UPDATE of status ON orders
+FOR EACH ROW
+BEGIN
+  IF NEW.status <> OLD.status THEN
+    SET NEW.changed = true;
+  END IF;
+END $$
+
+delimiter ;

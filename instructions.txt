@@ -1,0 +1,13 @@
+Zendesk:
+
+This example project shows some ways we can manage the Zendesk tickets. For this project we created a Contact Form page where users can write a message and select the type of the message,
+a script that is connected to a sample database and create or update Zendesk tickets based on some criteria and a Zendesk Help Center.
+
+We have created some Views on the Zendesk dashboard like Orders, Urgent Orders, Contact, Help Center and each View will have only the respective tickets.
+We have also created some Groups and there are some people who belong in each group.
+
+The php script makes a connection to an sample db which includes some orders. The script loops through the database checks the 'status' field and foreach order that has a 'incomplete' status creates a zendesk ticket.
+The script checks also the deadline and if its <14 create Urgent tickets.
+If the status changes the script update the Zendesk ticket.
+
+The Contact form has a dropdown menu where the user can select the type of the message like Order, Contact and the ticket will be shown in the specific View.

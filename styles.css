@@ -1,0 +1,9 @@
+.labels{
+      display: inline-block;
+      width:150px;
+}
+
+.inputs{
+      display: inline-block;
+      width:500px;
+}
